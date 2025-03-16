@@ -71,9 +71,9 @@ export default function User() {
             <div className="relative">
                 <Search />
             </div>
-            <div className="relative h-full">
-            <div className="absolute top-100 left-1/2 transform -translate-x-1/2 -translate-y-1/2
-              bg-[#041E23] border border-[#0E464F] border-solid w-[90%] md:w-2xl  h-[87%] rounded-3xl">
+            <div className=" relative h-full overflow-hidden">
+            <div className=" absolute left-1/2 top-[25rem] transform -translate-x-1/2 -translate-y-1/2
+              bg-[#041E23] border border-[#0E464F] border-solid h-[40rem]   w-[90%] md:w-2xl rounded-3xl">
        
                     <div className="-mt-4">
                         <ProgressBar title="Attendee Details" step="Step" number1={2} number2={3}
@@ -81,7 +81,8 @@ export default function User() {
                     </div>
             </div>
             <div className="relative" >
-                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[26.5rem] w-[90%] md:w-[37rem] h-[35rem] border border-[#0E464F] rounded-3xl">
+                <div className="absolute left-1/2 top-[30rem]  transform -translate-x-1/2 -translate-y-1/2 w-[90%]
+                 -mt-14 md:w-[36rem] h-[37rem] border border-[#0E464F] rounded-3xl ">
                     <div className="border mt-3 m-8 h-50 bg-[#07373F] border-[#07373F] rounded-3xl ">
                         <p className="text-xs md:text-sm lg:text-lg  p-3">Upload Profile Photo</p>
                         <div className="border my-8 mx-6 h-28 flex justify-center mt-1 bg-[#052228] border-[#052228]">
@@ -115,23 +116,23 @@ export default function User() {
                     <div className="border border-solid border-[#0E464F] mx-9 my-4"></div>
                     <div className="flex flex-col">
                         <label className="relative left-10 py-2">Enter your name</label>
-                        <input className="border border-[#07373F] mx-9 py-1 rounded-[.5rem]" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+                        <input className="border border-[#07373F] mx-9 py-1 rounded-[.5rem] outline-0" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
                         {isTicketClicked && name === "" && <span className="required-message">This input is required</span>}
 
                     </div>
 
                     <div className="flex flex-col">
                         <label className="relative left-10 py-2">Enter your email*</label>
-                        <input className="border border-[#07373F] mx-9 py-1 rounded-[.5rem]" type="text" placeholder="hello@avioflagos.io"
+                        <input className="border border-[#07373F] mx-9 py-1 rounded-[.5rem] outline-0" type="text" placeholder="hello@avioflagos.io"
                             value={email} onChange={(e) => setEmail(e.target.value)} required />
                         {isTicketClicked && email === "" && <span className="required-message">This input is required</span>}
-                        {isTicketClicked && email && !validateEmail(email) && <span className="email-error">{emailError}</span>}
+                        {isTicketClicked && email && !validateEmail(email) && <span className="email-error text-red-500">{emailError}</span>}
 
                     </div>
 
                     <div className="flex flex-col">
                         <label className="relative left-10 py-2">Special request?</label>
-                        <input className="border border-[#07373F] mx-9 h-14 py-1 rounded-[.5rem]" placeholder="Textarea" type="text" value={request} onChange={(e) => setRequest(e.target.value)} />
+                        <input className="border border-[#07373F] mx-9 h-14 py-1 rounded-[.5rem] outline-0" placeholder="Textarea" type="text" value={request} onChange={(e) => setRequest(e.target.value)} />
                     </div>
                     <div className="flex justify-center gap-4 my-2">
                         <Buttons handleClick={handleTicket} text="Back" style="border border-[#07373F] px-10 md:px-22 rounded-[.5rem] text-xs md:text-sm lg:text-lg py-1" />
@@ -148,7 +149,6 @@ export default function User() {
     )
 
 }
-
 
 
 /*    */

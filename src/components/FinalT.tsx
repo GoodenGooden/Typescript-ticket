@@ -24,10 +24,10 @@ const navigate = useNavigate()
       <div className="relative z-10">
         <Search />
       </div>
-      <div className="relative h-full ">
+      <div className="relative h-full overflow-hidden">
 
         <div className="absolute top-40 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#041E23] border
-        border-[#0E464F] border-solid w-[90%] md:w-2xl mt-60 md:mt-50 h-[90%] md:h-[97%] rounded-3xl">
+        border-[#0E464F] border-solid w-[90%] md:w-2xl mt-65 md:mt-50 h-[42rem] md:h-[43.5rem] rounded-3xl">
           <div className="text-center">
             <ProgressBar title="Ready" step="Step" number1={3} number2={3}
               width="border-4 border-t-0 border-l-0 border-r-0 border-[#24A0B5] w-[100%] relative top-1 " />
@@ -52,7 +52,7 @@ const navigate = useNavigate()
 
                 </div>
                 <div className="relative top-7 md:top-7">
-            <img src="/public/barcode.png" />
+            <img src="/barcode.png" />
           </div>
 
               </div>

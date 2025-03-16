@@ -71,9 +71,9 @@ export default function User() {
             <div className="relative">
                 <Search />
             </div>
-            <div className=" relative h-full overflow-hidden">
+            <div className=" relative h-full ">
             <div className=" absolute left-1/2 top-[25rem] transform -translate-x-1/2 -translate-y-1/2
-              bg-[#041E23] border border-[#0E464F] border-solid h-[40rem]   w-[90%] md:w-2xl rounded-3xl">
+              bg-[#041E23] border border-[#0E464F] border-solid h-[39rem]   w-[90%] md:w-2xl rounded-3xl">
        
                     <div className="-mt-4">
                         <ProgressBar title="Attendee Details" step="Step" number1={2} number2={3}
@@ -82,7 +82,7 @@ export default function User() {
             </div>
             <div className="relative" >
                 <div className="absolute left-1/2 top-[30rem]  transform -translate-x-1/2 -translate-y-1/2 w-[90%]
-                 -mt-14 md:w-[36rem] h-[37rem] border border-[#0E464F] rounded-3xl ">
+                 -mt-14 md:w-[36rem] h-[36rem] border border-[#0E464F] rounded-3xl ">
                     <div className="border mt-3 m-8 h-50 bg-[#07373F] border-[#07373F] rounded-3xl ">
                         <p className="text-xs md:text-sm lg:text-lg  p-3">Upload Profile Photo</p>
                         <div className="border my-8 mx-6 h-28 flex justify-center mt-1 bg-[#052228] border-[#052228]">

@@ -35,10 +35,10 @@ export default function Tickets() {
             <div className="relative">
                 <Search />
             </div>
-             <div className="relative h-full overflow-hidden">
+             <div className="relative h-full">
             <Border>
                      
-                <ProgressBar title="Ticket Selection" step="Step" number1={1} number2={2}
+                <ProgressBar title="Ticket Selection" step="Step" number1={1} number2={3}
                         width="border-4 border-t-0 border-l-0 border-r-0 border-[#24A0B5] w-[40%] relative top-1" />
 
                     <div className="relative">

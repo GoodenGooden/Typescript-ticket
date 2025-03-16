@@ -24,7 +24,7 @@ const navigate = useNavigate()
       <div className="relative z-10">
         <Search />
       </div>
-      <div className="relative h-full overflow-hidden">
+      <div className="relative h-full ">
 
         <div className="absolute top-40 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#041E23] border
         border-[#0E464F] border-solid w-[90%] md:w-2xl mt-65 md:mt-50 h-[42rem] md:h-[43.5rem] rounded-3xl">

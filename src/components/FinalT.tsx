@@ -1,4 +1,5 @@
 
+
 import { useNavigate } from "react-router-dom";
 import Buttons from "./Buttons";
 import ProgressBar from "./ProgressBar";
@@ -20,13 +21,13 @@ const navigate = useNavigate()
       
 
   return (
-    <div className="bg-[#02191D] text-white h-svh">
+    <div className="bg-[#02191D] text-white h-auto min-h-screen flex flex-col overflow-hidden">
       <div className="relative z-10">
         <Search />
       </div>
-      <div className="relative h-full ">
+      <div className="relative h-auto ">
 
-        <div className="absolute top-40 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#041E23] border
+        <div className="relative top-40 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#041E23] border
         border-[#0E464F] border-solid w-[90%] md:w-2xl mt-65 md:mt-50 h-[42rem] md:h-[43.5rem] rounded-3xl">
           <div className="text-center">
             <ProgressBar title="Ready" step="Step" number1={3} number2={3}

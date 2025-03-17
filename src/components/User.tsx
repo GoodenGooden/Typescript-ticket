@@ -1,4 +1,139 @@
 
+import { useNavigate } from "react-router-dom";
+import Buttons from "./Buttons";
+import ProgressBar from "./ProgressBar";
+import Search from "./Search";
+import { WiCloudDown } from "react-icons/wi";
+import { Allstate } from "./Context";
+import { useRef } from "react";
+
+export default function User() {
+    const navigate = useNavigate();
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+    const { name, setName, image, setImage, email, setEmail, request, setRequest, emailError, setEmailError, isTicketClicked, setIsTicketClicked } = Allstate();
+
+    const validateEmail = (email: string): boolean => {
+        const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        return regex.test(email);
+    };
+
+    function handleFinalT() {
+        setIsTicketClicked(true); // Set state to true when the button is clicked
+        if (!name || !email || !request) {
+            return; // Don't navigate if any field is empty
+        }
+
+        if (!validateEmail(email)) {
+            setEmailError("Please enter a valid email address.");
+            return; // Stop navigation if email is invalid
+        } else {
+            setEmailError(""); // Clear the error message if the email is valid
+        }
+        // If everything is valid, navigate to the next page
+        navigate('/FinalT')
+    }
+
+    function handleTicket() {
+        navigate('/')
+    }
+
+    async function handleFileupload(event: React.ChangeEvent<HTMLInputElement>) {
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        const data = new FormData()
+        data.append("file", file)
+        data.append("upload_preset", "Gooden")
+        data.append("cloud_name", "djkllb0te")
+
+        const res = await fetch(" https://api.cloudinary.com/v1_1/djkllb0te/image/upload", {
+            method: "POST",
+            body: data
+        })
+        const image = await res.json()
+        console.log(image)
+        setImage(image.url)
+    }
+
+    return (
+        <div className="bg-[#02191D] text-white h-auto min-h-screen flex flex-col  overflow-hidden">
+
+            <div className="relative ">
+                <Search />
+            </div>
+
+            <div className="relative flex-1  ">
+                <div className=" relative top-20 bg-[#041E23] h-[48rem] border border-[#0E464F] border-solid w-[90%] md:w-2xl rounded-3xl mx-auto">
+                    <div className="m-1">
+                        <ProgressBar title="Attendee Details" step="Step" number1={2} number2={3}
+                            width="border-4 border-t-0 border-l-0 border-r-0 border-[#24A0B5] w-[70%]" />
+                    </div>
+                </div>
+
+                {/* Form Container */}
+                <div className= " relative -top-152 h-[42rem] w-[90%] md:w-[37rem] min-h-[32rem] border border-[#0E464F] rounded-3xl mx-auto">
+                  <div className="m-8">
+                        {/* Upload Profile Photo Section */}
+                        <div className="border mt-3 p-6 h-auto bg-[#07373F] border-[#07373F] rounded-3xl">
+                            <p className="text-xs md:text-sm lg:text-lg p-3">Upload Profile Photo</p>
+                            <div className="border my-8 mx-6 h-28 flex justify-center mt-1 bg-[#052228] border-[#052228]">
+                                <div className="border bg-[#0E464F] border-[#07373F] -mt-2 h-34 w-34 rounded-3xl content-center">
+                                    {image ? (
+                                        <img className="border bg-[#0E464F] border-[#07373F]  h-34 w-34 rounded-3xl" src={image} alt="img" />
+                                    ) : (
+                                        <div className="text-[2rem]">
+                                            <WiCloudDown className="relative left-13" onClick={() => fileInputRef.current?.click()} />
+                                            <div>
+                                                <p className="text-xs">Drag & drop or click to</p>
+                                                <input ref={fileInputRef} onChange={handleFileupload} className="bg-transparent hidden" type="file" />
+                                                <p className="flex justify-center text-xs">upload</p>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Form Fields Section */}
+                        <div className="mt-4">
+                            <div className="flex flex-col">
+                                <label className="relative left-10 py-2">Enter your name</label>
+                                <input className="border border-[#07373F] mx-9 py-1 rounded-[.5rem] outline-0" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+                                {isTicketClicked && name === "" && <span className="required-message">This input is required</span>}
+                            </div>
+
+                            <div className="flex flex-col mt-4">
+                                <label className="relative left-10 py-2">Enter your email*</label>
+                                <input className="border border-[#07373F] mx-9 py-1 rounded-[.5rem] outline-0" type="text" placeholder="hello@avioflagos.io"
+                                    value={email} onChange={(e) => setEmail(e.target.value)} required />
+                                {isTicketClicked && email === "" && <span className="required-message">This input is required</span>}
+                                {isTicketClicked && email && !validateEmail(email) && <span className="email-error text-red-500">{emailError}</span>}
+                            </div>
+
+                            <div className="flex flex-col mt-4">
+                                <label className="relative left-10 py-2">Special request?</label>
+                                <input className="border border-[#07373F] mx-9 h-14 py-1 rounded-[.5rem] outline-0" placeholder="Textarea" type="text" value={request} onChange={(e) => setRequest(e.target.value)} />
+                            </div>
+
+                            {/* Buttons Section */}
+                            <div className="flex justify-center gap-4 my-4">
+                                <Buttons handleClick={handleTicket} text="Back" style="border border-[#07373F] px-10 md:px-22 rounded-[.5rem] text-xs md:text-sm lg:text-lg py-1" />
+                                <Buttons handleClick={handleFinalT} text="Get my free ticket" style="border border-[#07373F] rounded-[.5rem] px-1 md:px-10 text-xs md:text-sm lg:text-lg py-1 bg-[#24A0B5]" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    );
+}
+
+ /* "relative  bg-[#041E23] border border-[#0E464F] border-solid w-[90%] md:w-2xl rounded-3xl mx-auto">" */
+
+
+/*
 
 import { useNavigate } from "react-router-dom";
 import Buttons from "./Buttons";
@@ -151,4 +286,4 @@ export default function User() {
 }
 
 
-/*    */
+*/

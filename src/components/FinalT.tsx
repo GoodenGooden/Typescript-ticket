@@ -25,7 +25,7 @@ const navigate = useNavigate()
       <div className="relative z-10">
         <Search />
       </div>
-      <div className="relative h-auto ">
+      <div className="relative h-auto  ">
 
         <div className="relative top-40 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#041E23] border
         border-[#0E464F] border-solid w-[90%] md:w-2xl mt-65 md:mt-50 h-[42rem] md:h-[43.5rem] rounded-3xl">
@@ -37,7 +37,7 @@ const navigate = useNavigate()
               <p>Check your email for a copy or you can download</p>
             </div>
           </div>
-          <div className="flex justify-center  relative">
+          <div className="flex justify-center  relative ">
             <Svg />
             <div className=" border absolute h-[20rem] w-[13rem] my-6 rounded-2xl border-[#24A0B5]" >
               <h1 className="text-center relative  top-5 text-[1.5rem] -mt-3 font-[Road_Rage]">Techember Fest ”25</h1>
